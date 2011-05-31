@@ -10,7 +10,8 @@ with Linux distributions as well.
     cd ~/.dotfiles
     git submodule init
     git submodule update
-    rake install
+    rake  # or rake "df:install && rake df:install_bin" to skip janus
+install
 
 This produces symlinks for the files in .dotfiles to the appropriate
 places.
