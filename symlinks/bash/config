@@ -1,0 +1,56 @@
+#
+# Determine if we are using gdircolors or
+# dircolors. This will vary based on use of
+# gnu-coreutils package or the plain 
+# coreutils installed with Linux.
+#
+if [ `which gdircolors` ]; then 
+  export gdircolors_exe=`which gdircolors`
+else
+  export gdircolors_exe=`which dircolors`
+fi
+
+# Do the same for ls as we'd prefer to
+# have GNU ls with the cool colorizing
+# options installed
+if [ `which gls` ]; then
+  export ls_exe=`which gls`
+else
+  export ls_exe=`which ls`
+fi
+
+# Pretty colors!
+if [ "$TERM" != "dumb" ]; then
+  export LS_OPTIONS='--color=always'
+  [[ -s "$gdircolors_exe" ]] && eval `$gdircolors_exe ~/.dir_colors`
+fi
+
+# VI mode for the win!
+set -o vi
+
+#
+# Set up functions for displaying the current 
+# git branch in your prompt.
+#
+# http://henrik.nyh.se/2008/12/git-dirty-prompt
+# http://www.simplisticcomplexity.com/2008/03/13/show-your-git-branch-name-in-your-prompt/
+#   username@Machine ~/dev/dir[master]$   # clean working directory
+#   username@Machine ~/dev/dir[master*]$  # dirty working directory
+#
+function parse_git_dirty {
+  [[ $(git status 2> /dev/null | tail -n1) != "nothing to commit (working directory clean)" ]] && echo "*"
+}
+function parse_git_branch {
+  git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/ [\1$(parse_git_dirty)]/"
+}
+export PS1='\u@\h \[\033[1;33m\]\w\[\033[0m\]$(parse_git_branch)$ '
+
+# Use fbcmd to see which friends are online
+# Requires fbcmd to be installed and configured with
+# your Facebook login information.
+fbonline() {
+  ruby -e 'puts `fbcmd fonline -csv | tail +2`.gsub(/,(active|idle)/,"")'
+}
+
+# Growl. GRRR!!!
+growl() { echo -e $'\e]9;'${1}'\007' ; return  ; }

@@ -1,0 +1,31 @@
+#!/usr/bin/env ruby
+
+require 'rubygems'
+require 'chronic'  
+
+def usage
+  puts "whenis <time phrase>"
+  puts "Where <time phrase> is anything Chronic can parse"
+  puts "See http://chronic.rubyforge.org/ for more details"
+  exit 1
+end
+
+args = ARGV.join(' ')
+usage if args.empty?
+
+parsed = Chronic.parse(args)
+unless parsed
+  puts "I can't parse that. See http://chronic.rubyforge.org/"
+  puts "for examples of what will work."
+  exit 1
+end
+
+difference = ((parsed - Time.now) / 60).to_i
+
+if difference < 0
+  occurs = "occurred #{difference * -1} minutes ago"
+else
+  occurs = "occurs in #{difference} minutes"
+end
+
+puts "'#{args}', or #{parsed}, #{occurs}"

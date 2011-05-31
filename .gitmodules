@@ -1,0 +1,9 @@
+[submodule "symlinks/vim/vimrc.symlink"]
+	path = symlinks/vim/vimrc.symlink
+	url = https://github.com/carlhuda/janus.git
+[submodule "symlinks/vimrc"]
+	path = symlinks/vimrc
+	url = https://github.com/carlhuda/janus.git
+[submodule "symlinks/vim"]
+	path = symlinks/vim
+	url = https://github.com/carlhuda/janus.git

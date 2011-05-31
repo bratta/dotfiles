@@ -1,0 +1,30 @@
+require 'irb/completion'
+require 'irb/ext/save-history'
+require 'pp'
+require 'rubygems'
+
+begin
+  require 'wirble'
+
+  Wirble.init
+  Wirble.colorize
+
+  colors = Wirble::Colorize.colors.merge({
+    :object_class => :purple,
+    :symbol => :purple,
+    :symbol_prefix => :purple
+   })
+   Wirble::Colorize.colors = colors
+rescue LoadError => err
+  $stderr.puts "Unable to load wirble. Install the gem or add this gem to your Gemfile for colorized console output."
+end
+
+IRB.conf[:AUTO_INDENT] = true
+
+module Kernel
+  private
+  def c(*args)
+    buf = args.join
+    fork { fork { IO.popen('pbcopy', 'w') { |fd| fd.write(buf) } }; exit!(0) }
+  end
+end

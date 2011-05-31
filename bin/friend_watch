@@ -1,0 +1,65 @@
+#!/usr/bin/env ruby
+
+require 'rubygems'
+require 'mongo'
+require 'term/ansicolor'
+include Term::ANSIColor
+
+SCRIPT_VERSION  = '0.1.0'
+database = 'friend_watch'
+host     = 'localhost'
+port    = 27017
+@purge_enabled = false
+
+@purge_enabled = true if (ARGV[0] == "--purge")
+
+print green(bold("Friend Watch #{SCRIPT_VERSION}")), "\n"
+puts "------------------"
+
+print white("Connecting to local MongoDB database #{database}..."), "\n"
+db = Mongo::Connection.new(host, port).db(database)
+collection = db.collection("friends")
+
+print white("Getting list of friends from fbcmd..."), "\n"
+friendlist = `fbcmd friends | tail +2`
+friends = friendlist.split(/\n/)
+print bold("Fetched #{friends.count} friends from Facebook"), "\n"
+
+new_friends = 0
+deleted_friends = 0
+updated_time = Time.now.utc
+
+friends.each do |friend|
+  match = friend.match(/^(\d+)\s+(.*)/)
+  uid = match[1].to_i
+  name = match[2]
+  #next if name == "Andrew Hrubik"  # <-- Test deleted friend functionality
+  existing_friend = collection.find_one("fbid" => uid)
+  if existing_friend
+    print white("Found existing friend #{name}"), "\n"
+  else
+    print green(bold("Found NEW friend #{name}")), "\n"
+    new_friends += 1    
+  end
+  # Perform an upsert with the current timestamp
+  collection.update({ :fbid => uid }, {:fbid => uid, :name => name, :updated_at => updated_time }, { :upsert => true })
+end
+
+# If any friends don't have an updated timestamp, they've been removed
+collection.find("updated_at" => { "$ne" => updated_time }).each do |baleeted|
+  print red(bold("Found DELETED friend #{baleeted['name']}")), "\n"
+  if @purge_enabled == true
+    collection.remove({ :fbid => baleeted['fbid'] })
+    print red(bold("`-> Purging record for deleted friend #{baleeted['name']}")), "\n"
+  end
+  deleted_friends += 1
+end
+
+puts "\nSummary:"
+puts "---------"
+print bold("Total friends on Facebook: ")
+print green(bold("#{friends.count}")), "\n"
+print bold("Total new friends: ")
+print green(bold("#{new_friends}")), "\n"
+print bold("Total deleted friends: ")
+print green(bold("#{deleted_friends}")), "\n"

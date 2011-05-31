@@ -1,0 +1,23 @@
+export ARCHFLAGS="-arch x86_64"
+export EDITOR="/Users/tim/bin/mvim"
+export SAMURAI_EDITOR="/Users/tim/bin/mvim"
+export MONGODB_HOME="/usr/local/mongodb"
+export RACK_ENV="development"
+export MYSQL_HOME="/usr/local/mysql"
+
+export LESS=X
+export LESS_TERMCAP_mb=$'\E[01;31m' # begin blinking
+export LESS_TERMCAP_md=$'\E[01;31m' # begin bold
+export LESS_TERMCAP_me=$'\E[0m' # end mode
+export LESS_TERMCAP_se=$'\E[0m' # end standout-mode
+export LESS_TERMCAP_so=$'\E[01;44m' # begin standout-mode – info
+export LESS_TERMCAP_ue=$'\E[0m' # end underline
+export LESS_TERMCAP_us=$'\E[32m' # begin underline
+
+# Color, yo!
+export TERM="xterm-color"
+#export TERM="ansi"
+
+export EVENT_NOKQUEUE=1
+
+export PATH=/Users/tim/bin:$MYSQL_HOME/bin:$MONGODB_HOME/bin:$PATH

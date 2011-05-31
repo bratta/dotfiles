@@ -1,0 +1,10 @@
+alias ipof="ruby -ripaddr -e 'print IPAddr.ntop(Socket.gethostbyname(ARGV.shift).last)'"
+alias commitrandom="curl http://whatthecommit.com/index.txt | xargs -0 git commit -m"
+
+# Use GNU ls from gnu-coreutils instead
+alias ls='$ls_exe $LS_OPTIONS --classify --tabsize=0 --literal --show-control-chars --human-readable --group-directories-first'
+alias ll='ls -lhF'
+alias l='ls -lAhF'
+alias la='ls -AhF'
+alias less='less -R'
+alias tree='tree -C'
