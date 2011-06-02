@@ -41,4 +41,4 @@ $manager $packages
 rake
 
 # Make sure RVM is in place
-[[ -s "$HOME/.rvm/scripts/rvm ]] || bash < <(curl -s https://rvm.beginrescueend.com/install/rvm)
+[[ -s "$HOME/.rvm/scripts/rvm" ]] || bash < <(curl -s https://rvm.beginrescueend.com/install/rvm)
