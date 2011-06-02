@@ -45,7 +45,7 @@ else
   git clone https://bratta@github.com/bratta/dotfiles.git ~/.dotfiles
   cd ~/.dotfiles
   git submodule init
-  git submodule updat
+  git submodule update
 fi
 cd ~/.dotfiles
 
