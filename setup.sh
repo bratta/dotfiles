@@ -37,6 +37,10 @@ fi
 # Install necessary packages
 $manager $packages
 
+# Now we should have git. Let's get the dotfiles repo and go to town
+git clone https://bratta@github.com/bratta/dotfiles.git ~/.dotfiles
+cd ~/.dotfiles
+
 # Symlink dotfiles
 rake
 
