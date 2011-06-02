@@ -49,6 +49,7 @@ namespace :df do
   task :install_bin do
     sources = Dir.glob("#{ENV["HOME"]}/.dotfiles/bin/*")
     target_dir = "#{ENV["HOME"]}/bin/"
+    FileUtils.mkdir_p(target_dir)
     linkup_files(sources, target_dir)
   end
 
