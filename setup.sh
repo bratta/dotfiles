@@ -38,7 +38,12 @@ fi
 $manager $packages
 
 # Now we should have git. Let's get the dotfiles repo and go to town
-git clone https://bratta@github.com/bratta/dotfiles.git ~/.dotfiles
+if [[ -d ~/.dotfiles ]]; then
+  cd ~/.dotfiles
+  git pull
+else
+  git clone https://bratta@github.com/bratta/dotfiles.git ~/.dotfiles
+fi
 cd ~/.dotfiles
 
 # Symlink dotfiles
