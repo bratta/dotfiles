@@ -47,7 +47,14 @@ fi
 cd ~/.dotfiles
 
 # Symlink dotfiles
+rake df:install df:install_bin
+
+# Install Janus
+cd ~/.vim
 rake
 
 # Make sure RVM is in place
 [[ -s "$HOME/.rvm/scripts/rvm" ]] || bash < <(curl -s https://rvm.beginrescueend.com/install/rvm)
+
+# Load our new config
+source ~/.bash_profile
