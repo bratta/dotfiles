@@ -47,7 +47,7 @@ fi
 cd ~/.dotfiles
 
 # Symlink dotfiles
-/bin/bash -ci "cd ~/.dotfiles; rake"
+rake
 
 # Make sure RVM is in place
 [[ -s "$HOME/.rvm/scripts/rvm" ]] || bash < <(curl -s https://rvm.beginrescueend.com/install/rvm)
