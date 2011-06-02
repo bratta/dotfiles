@@ -21,7 +21,7 @@ If you're feeling brave, you can try the setup.sh script which will
 attempt to automatically install the necessary software packages, clone
 the repo, set up the dotfiles, and install RVM all in one fell swoop.
 
-    bash < <(curl -s https://github.com/bratta/dotfiles/raw/master/setup.sh)
+    bash <(curl -s https://github.com/bratta/dotfiles/raw/master/setup.sh)
 
 This is setup to work for OS X using either macports or homebrew, as
 well as Ubuntu using aptitude.
