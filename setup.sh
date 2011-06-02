@@ -26,7 +26,7 @@ else
   if [ `which apt-get` ]; then
     echo "It appears you are running Ubuntu"
     manager="sudo apt-get install"
-    packages="build-essential ruby ri rdoc ruby1.8-dev irb1.8 libreadline-ruby1.8 libruby1.8 rdoc1.8 ri1.8 ruby1.8 irb libreadline5 psmisc wget git-core tree"
+    packages="build-essential ruby-full rubygems wget git-core tree"
   else
     echo "I have no idea what you are running."
     echo "I need OS X or an Ubuntu/debian system running aptitude."
@@ -36,6 +36,16 @@ fi
 
 # Install necessary packages
 $manager $packages
+
+# Make sure rake is installed
+if [ ! `which rake` ]; then
+  if [[ -s "$HOME/.rvm/scripts/rvm" ]]; then
+    gem_cmd="gem"
+  else
+    gem_cmd="sudo gem"
+  fi
+  $gem_cmd install rake --version 0.8.7 --no-rdoc --no-ri
+fi
 
 # Now we should have git. Let's get the dotfiles repo and go to town
 git clone https://bratta@github.com/bratta/dotfiles.git ~/.dotfiles
