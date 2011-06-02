@@ -1,9 +1,18 @@
-export ARCHFLAGS="-arch x86_64"
-export EDITOR="/Users/tim/bin/mvim"
-export SAMURAI_EDITOR="/Users/tim/bin/mvim"
 export MONGODB_HOME="/usr/local/mongodb"
 export RACK_ENV="development"
 export MYSQL_HOME="/usr/local/mysql"
+
+arch=`uname -a | awk '{ print $1 }'`
+if [ "$arch" == "Darwin" ]; then
+  export ARCHFLAGS="-arch x86_64"
+  export EDITOR="/Users/tim/bin/mvim"
+  export SAMURAI_EDITOR="/Users/tim/bin/mvim"
+  export EVENT_NOKQUEUE=1
+  export PATH=/Users/tim/bin:$MYSQL_HOME/bin:$MONGODB_HOME/bin:$PATH
+else
+  export EDITOR="/usr/bin/vim"
+  export PATH=/home/tim/bin:$MYSQL_HOME/bin:$MONGODB_HOME/bin:$PATH
+fi
 
 export LESS=X
 export LESS_TERMCAP_mb=$'\E[01;31m' # begin blinking
@@ -17,7 +26,3 @@ export LESS_TERMCAP_us=$'\E[32m' # begin underline
 # Color, yo!
 export TERM="xterm-color"
 #export TERM="ansi"
-
-export EVENT_NOKQUEUE=1
-
-export PATH=/Users/tim/bin:$MYSQL_HOME/bin:$MONGODB_HOME/bin:$PATH
