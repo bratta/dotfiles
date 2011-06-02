@@ -43,6 +43,9 @@ if [[ -d ~/.dotfiles ]]; then
   git pull
 else
   git clone https://bratta@github.com/bratta/dotfiles.git ~/.dotfiles
+  cd ~/.dotfiles
+  git submodule init
+  git submodule updat
 fi
 cd ~/.dotfiles
 
