@@ -8,10 +8,12 @@ if [ "$arch" == "Darwin" ]; then
   export EDITOR="/Users/tim/bin/mvim"
   export SAMURAI_EDITOR="/Users/tim/bin/mvim"
   export EVENT_NOKQUEUE=1
-  export PATH=/Users/tim/bin:$MYSQL_HOME/bin:$MONGODB_HOME/bin:$PATH
+  export NODE_PATH="/Users/tim/local/node"
+  export PATH=/Users/tim/bin:$NODE_PATH/bin:$MYSQL_HOME/bin:$MONGODB_HOME/bin:$PATH
 else
   export EDITOR="/usr/bin/vim"
-  export PATH=/home/tim/bin:$MYSQL_HOME/bin:$MONGODB_HOME/bin:$PATH
+  export NODE_PATH="/home/tim/local/node"
+  export PATH=/home/tim/bin:$NODE_PATH/bin:$MYSQL_HOME/bin:$MONGODB_HOME/bin:$PATH
 fi
 
 export LESS=X
