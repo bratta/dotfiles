@@ -13,10 +13,10 @@ if [ "$arch" == "Darwin" ]; then
   echo "It appears you are running OS X"
   if [ `which port` ]; then
     manager="sudo port install"
-    packages="wget git-core mtr gnu-coreutils tree"
+    packages="wget git-core mtr gnu-coreutils tree tmux"
   elif [ `which brew` ]; then
     manager="brew install"
-    packages="wget git mtr coreutils tree"
+    packages="wget git mtr coreutils tree tmux"
   else
     echo "You do not appear to have macports or homebrew installed."
     echo "Fix this if you want me to take you seriously, yo."
@@ -26,7 +26,7 @@ else
   if [ `which apt-get` ]; then
     echo "It appears you are running Ubuntu"
     manager="sudo apt-get -y install"
-    packages="build-essential ruby-full rubygems rake wget git-core tree"
+    packages="build-essential ruby-full rubygems rake wget git-core tree tmux"
   else
     echo "I have no idea what you are running."
     echo "I need OS X or an Ubuntu/debian system running aptitude."

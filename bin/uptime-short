@@ -1,0 +1,5 @@
+#!/bin/bash
+
+load=$(uptime | cut -d "," -f 4- | cut -d ":" -f 2-)
+up=$(uptime | cut -d "," -f 1-2 | sed 's|.*up ||')
+echo "$up ::$load"
