@@ -8,3 +8,5 @@ alias l='ls -lAhF'
 alias la='ls -AhF'
 alias less='less -R'
 alias tree='tree -C'
+
+alias mvim='/usr/local/bin/mvim -v'

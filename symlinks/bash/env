@@ -1,22 +1,19 @@
 export MONGODB_HOME="/usr/local/mongodb"
 export RACK_ENV="development"
-export MYSQL_HOME="/usr/local/mysql"
 
 arch=`uname -a | awk '{ print $1 }'`
 if [ "$arch" == "Darwin" ]; then
   export ARCHFLAGS="-arch x86_64"
-  export EDITOR="/Users/tim/bin/mvim"
-  export SAMURAI_EDITOR="/Users/tim/bin/mvim"
   export EVENT_NOKQUEUE=1
   export NODE_PATH="/Users/tim/local/node"
-  export PATH=/Users/tim/bin:$NODE_PATH/bin:$MYSQL_HOME/bin:$MONGODB_HOME/bin:$PATH
+  export PATH=/Users/tim/bin:$NODE_PATH/bin:$MONGODB_HOME/bin:/usr/local/sbin:$PATH
 else
   export EDITOR="/usr/bin/vim"
   export NODE_PATH="/home/tim/local/node"
-  export PATH=/home/tim/bin:$NODE_PATH/bin:$MYSQL_HOME/bin:$MONGODB_HOME/bin:$PATH
+  export PATH=/home/tim/bin:$NODE_PATH/bin:$MONGODB_HOME/bin:/usr/local/sbin:$PATH
 fi
 
-export LESS=X
+export LESS="-erX"
 export LESS_TERMCAP_mb=$'\E[01;31m' # begin blinking
 export LESS_TERMCAP_md=$'\E[01;31m' # begin bold
 export LESS_TERMCAP_me=$'\E[0m' # end mode

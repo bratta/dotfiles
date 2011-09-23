@@ -1,4 +1,4 @@
-color vwilight
+color ironman
 
 " Rename files with :Rename[!] newfile.txt
 command! -nargs=* -complete=file -bang Rename :call Rename("<args>", "<bang>")
@@ -30,3 +30,5 @@ function! <SID>StripTrailingWhitespaces()
   call cursor(l, c)
 endfunction
 nnoremap <silent> <F5> :call <SID>StripTrailingWhitespaces()<CR>
+
+set backupskip=/tmp/*,/private/tmp/*
