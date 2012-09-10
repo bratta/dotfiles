@@ -52,11 +52,5 @@ namespace :df do
     FileUtils.mkdir_p(target_dir)
     linkup_files(sources, target_dir)
   end
-
-  desc "Execute Janus setup"
-  task :janus do
-    `cd symlinks/vim; rake`
-  end
-
 end
-task :default => ['df:install', 'df:install_bin', 'df:janus']
+task :default => ['df:install', 'df:install_bin']

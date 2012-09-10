@@ -5,13 +5,14 @@ arch=`uname -a | awk '{ print $1 }'`
 if [ "$arch" == "Darwin" ]; then
   export ARCHFLAGS="-arch x86_64"
   export EVENT_NOKQUEUE=1
-  export NODE_PATH="/Users/tim/local/node"
+  export NODE_PATH="/usr/local/lib/node_modules"
   export PATH=/Users/tim/bin:$NODE_PATH/bin:$MONGODB_HOME/bin:/usr/local/sbin:$PATH
 else
-  export EDITOR="/usr/bin/vim"
   export NODE_PATH="/home/tim/local/node"
   export PATH=/home/tim/bin:$NODE_PATH/bin:$MONGODB_HOME/bin:/usr/local/sbin:$PATH
 fi
+export EDITOR="/usr/bin/vim"
+export PATH=/usr/local/bin:$PATH
 
 export LESS="-erX"
 export LESS_TERMCAP_mb=$'\E[01;31m' # begin blinking

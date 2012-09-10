@@ -10,3 +10,4 @@ alias less='less -R'
 alias tree='tree -C'
 
 alias mvim='/usr/local/bin/mvim -v'
+alias gpr='git pr'

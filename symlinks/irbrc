@@ -16,7 +16,7 @@ begin
    })
    Wirble::Colorize.colors = colors
 rescue LoadError => err
-  $stderr.puts "Unable to load wirble. Install the gem or add this gem to your Gemfile for colorized console output."
+  #$stderr.puts "Unable to load wirble. Install the gem or add this gem to your Gemfile for colorized console output."
 end
 
 IRB.conf[:AUTO_INDENT] = true
@@ -27,4 +27,13 @@ module Kernel
     buf = args.join
     fork { fork { IO.popen('pbcopy', 'w') { |fd| fd.write(buf) } }; exit!(0) }
   end
+end
+
+# For Rails 2.3
+require 'logger'
+if ENV.include?('RAILS_ENV')&& 
+!Object.const_defined?('RAILS_DEFAULT_LOGGER')
+   Object.const_set('RAILS_DEFAULT_LOGGER', Logger.new(STDOUT))
+else
+   ActiveRecord::Base.logger = Logger.new(STDOUT)
 end

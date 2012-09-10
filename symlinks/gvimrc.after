@@ -1,0 +1,6 @@
+color vwilight
+
+nnoremap <Up> <C-W>-
+nnoremap <Down> <C-W>+
+nnoremap <Left> <C-W><
+nnoremap <Right> <C-W>>
