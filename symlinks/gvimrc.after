@@ -1,4 +1,4 @@
-color vwilight
+color ir_black
 
 nnoremap <Up> <C-W>-
 nnoremap <Down> <C-W>+
