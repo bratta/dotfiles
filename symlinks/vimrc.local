@@ -1,4 +1,10 @@
-color ir_black
+syntax enable
+let g:solarized_termtrans = 1
+let g:solarized_visibility = "low"
+set background=dark
+colorscheme solarized
+" color ir_black
+" color vylight
 
 " Rename files with :Rename[!] newfile.txt
 command! -nargs=* -complete=file -bang Rename :call Rename("<args>", "<bang>")
