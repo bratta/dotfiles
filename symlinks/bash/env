@@ -12,7 +12,7 @@ else
   export PATH=/home/tim/bin:$NODE_PATH/bin:$MONGODB_HOME/bin:/usr/local/sbin:$PATH
 fi
 export EDITOR="/usr/bin/vim"
-export PATH=/usr/local/bin:$PATH
+export PATH=/usr/local/share/npm/bin:/usr/local/bin:/Users/tim/.rvm/bin:$PATH
 
 export LESS="-erX"
 export LESS_TERMCAP_mb=$'\E[01;31m' # begin blinking

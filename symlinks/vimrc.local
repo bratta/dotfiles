@@ -3,8 +3,17 @@ let g:solarized_termtrans = 1
 let g:solarized_visibility = "low"
 set background=dark
 colorscheme solarized
-" color ir_black
-" color vylight
+highlight clear SignColumn
+
+let g:indent_guides_auto_colors = 0
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=black
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=red
+
+let g:gist_clip_command = 'pbcopy'
+let g:gist_detect_filetype = 1
+let g:gist_post_private = 1
+
+let g:tslime = {'window': '2', 'pane': '0', 'session': 'wemux'}
 
 " Rename files with :Rename[!] newfile.txt
 command! -nargs=* -complete=file -bang Rename :call Rename("<args>", "<bang>")
@@ -91,3 +100,5 @@ nmap <Up> <C-w>-
 nmap <Down> <C-w>+
 nmap <Left> <C-w><
 nmap <Right> <C-w>>
+
+au BufRead,BufNewFile *.hamlc set ft=haml

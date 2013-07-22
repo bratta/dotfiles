@@ -1,6 +1,6 @@
 [user]
 	name = Tim Gourley
-  email = tgourley@gmail.com
+	email = tgourley@gmail.com
 [difftool "Kaleidoscope"]
   cmd = ksdiff-wrapper git \"$LOCAL\" \"$REMOTE\"
 [difftool]
