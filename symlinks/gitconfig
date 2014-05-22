@@ -8,13 +8,20 @@
 [diff]
   tool = Kaleidoscope
 [alias]
-  lg = "!git log -20 --graph --color=always --abbrev-commit --date=relative --pretty=format:'%x00%h%x00%s%x00%cd%x00%an%x00%d' | gawk -F '\\0' '{ printf \"%s\\033[31m%s\\033[0m %-50s \\033[32m%14s\\033[0m \\033[30;1m%s\\033[0m\\033[33m%s\\n\", $1, $2, gensub(/(.{49}).{2,}/, \"\\\\1…\",\"g\",$3), $4, $5, $6 }' | cat"
-  l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+  lg = "!git log -20 --graph --color=always --abbrev-commit --date=relative --pretty=format:'%x00%h%x00%s%x00%cd%x00%an%x00%d' | gawk -F '\\0' '{ printf \"%s\\033[31m%s\\033[0m %-50s \\033[32m%14s\\033[0m \\033[33;1m%s\\033[0m\\033[33m%s\\n\", $1, $2, gensub(/(.{49}).{2,}/, \"\\\\1…\",\"g\",$3), $4, $5, $6 }' | cat"
+  l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold green)<%an>%Creset' --abbrev-commit --date=relative
   st = status --short
   cam = commit -am
   br = branch
   co = checkout
   df = diff
   pr = pull --rebase
+	track = "!sh -c \"\nif [ \\$# -eq 2 ]\n then\n   echo \\\"Setting tracking for branch \\\" \\$1 \\\" -> \\\" \\$2;\n   git branch --set-upstream \\$1 \\$2;\n else\n   git for-each-ref --format=\\\"local: %(refname:short) <--sync--> remote: %(upstream:short)\\\" refs/heads && echo --URLs && git remote -v;\nfi  \n\" -"
+	changed = show --pretty=\"format:\" --name-only
 [push]
   default = current
+[color]
+	diff = true
+	branch = true
+	interactive = true
+	status = true

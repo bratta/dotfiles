@@ -1,11 +1,14 @@
 [[ -e ~/.bash/env ]] && source ~/.bash/env
 [[ -e ~/.bash/config ]] && source ~/.bash/config
 [[ -e ~/.bash/aliases ]] && source ~/.bash/aliases
-[[ -e ~/.bash/blinq ]] && source ~/.bash/blinq
-
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
-
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+[[ -e ~/.bash/phase2 ]] && source ~/.bash/phase2
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+
+[[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator
+
+[[ -s ~/.bash/git-completion.sh ]] && source ~/.bash/git-completion.sh
