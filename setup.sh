@@ -11,14 +11,11 @@
 arch=`uname -a | awk '{ print $1 }'`
 if [ "$arch" == "Darwin" ]; then
   echo "It appears you are running OS X"
-  if [ `which port` ]; then
-    manager="sudo port install"
-    packages="wget git-core mtr gnu-coreutils tree tmux"
-  elif [ `which brew` ]; then
+  if [ `which brew` ]; then
     manager="brew install"
-    packages="wget git mtr coreutils tree tmux"
+    packages="wget git mtr coreutils tree tmux node"
   else
-    echo "You do not appear to have macports or homebrew installed."
+    echo "You do not appear to have homebrew installed."
     echo "Fix this if you want me to take you seriously, yo."
     exit 1
   fi
@@ -26,7 +23,7 @@ else
   if [ `which apt-get` ]; then
     echo "It appears you are running Ubuntu"
     manager="sudo apt-get -y install"
-    packages="build-essential ruby-full rubygems rake wget git-core tree tmux"
+    packages="build-essential ruby-full rubygems rake wget git-core tree tmux ack-grep ctags silversearcher-ag nodejs npm"
   else
     echo "I have no idea what you are running."
     echo "I need OS X or an Ubuntu/debian system running aptitude."
@@ -36,6 +33,10 @@ fi
 
 # Install necessary packages
 $manager $packages
+
+# Install Janus
+cd ~/
+curl -Lo- https://bit.ly/janus-bootstrap | bash
 
 # Now we should have git. Let's get the dotfiles repo and go to town
 if [[ -d ~/.dotfiles ]]; then
@@ -51,10 +52,6 @@ cd ~/.dotfiles
 
 # Symlink dotfiles
 rake df:install df:install_bin
-
-# Install Janus
-cd ~/.vim
-rake
 
 # Make sure RVM is in place
 [[ -s "$HOME/.rvm/scripts/rvm" ]] || bash < <(curl -s https://rvm.beginrescueend.com/install/rvm)
