@@ -9,6 +9,7 @@ alias la='ls -AhF'
 alias less='less -R'
 alias tree='tree -C'
 
+alias emacs='/usr/local/Cellar/emacs-plus/25.1/bin/emacs'
 alias mvim='/usr/local/bin/mvim -v'
 alias gpr='git pr'
 alias gco='git co'
@@ -24,3 +25,4 @@ vim-git-modified() {
   gvim -g -p $(git show --pretty="format:" --name-only "$@" | xargs)
 }
 alias randmacaddress='sudo ifconfig en0 ether $(openssl rand -hex 6 | sed '\''s/\(..\)/\1:/g; s/.$//'\'')'
+alias prettyjson='pbpaste | python -m json.tool | gist -p -o -f formatted.json'

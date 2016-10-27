@@ -5,6 +5,8 @@ set background=dark
 colorscheme solarized
 highlight clear SignColumn
 
+set autoread
+
 let g:indent_guides_auto_colors = 0
 autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=black
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=red
@@ -106,6 +108,7 @@ nmap <Left> <C-w><
 nmap <Right> <C-w>>
 
 au BufRead,BufNewFile *.hamlc set ft=haml
+au BufRead,BufNewFile *.axlsx set ft=ruby
 set wildmode=longest,list,full
 set wildmenu
 
@@ -150,3 +153,5 @@ vnoremap <C-k> :m '<-2<CR>gv=gv
 let g:session_autosave = 'yes'
 let g:session_autoload = 'yes'
 let g:session_autosave_periodic = 5
+
+let g:typescript_indent_disable = 1

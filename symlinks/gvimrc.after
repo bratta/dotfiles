@@ -1,9 +1,11 @@
 syntax enable
-colorscheme jellybeans
+"colorscheme jellybeans
+colorscheme smyck
 highlight clear SignColumn
 set guifont=Menlo:h14
 set guioptions=gtrLme
-set transparency=10
+set transparency=5
+set autoread
 
 let g:session_autosave = 'yes'
 let g:session_autoload = 'yes'

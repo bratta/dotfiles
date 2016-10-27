@@ -2,3 +2,5 @@
 
 ### Added by the Heroku Toolbelt
 export PATH="$PATH:/usr/local/heroku/bin"
+
+#/Users/tim/.rvm/gems/ruby-2.1.2/bin/catpix --limit-height 1 ~/Pictures/wobbuffet.png

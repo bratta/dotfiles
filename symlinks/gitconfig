@@ -25,3 +25,15 @@
 	branch = true
 	interactive = true
 	status = true
+
+[hub]
+protocol = https
+
+[credential]
+
+[core]
+excludesfile = /opt/boxen/config/git/gitignore
+[filter "lfs"]
+	clean = git-lfs clean %f
+	smudge = git-lfs smudge %f
+	required = true

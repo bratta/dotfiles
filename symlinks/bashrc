@@ -12,3 +12,5 @@ PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 [[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator
 
 [[ -s ~/.bash/git-completion.sh ]] && source ~/.bash/git-completion.sh
+
+export PATH="$HOME/.yarn/bin:$PATH"

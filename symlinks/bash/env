@@ -10,8 +10,9 @@ else
   export NODE_PATH="/home/tim/local/node"
   export PATH=/home/tim/bin:$NODE_PATH/bin:usr/local/sbin:$PATH
 fi
-export EDITOR="/usr/bin/vim"
-export PATH=/usr/local/share/npm/bin:/usr/local/bin:/Users/tim/.rvm/bin:$PATH
+# export EDITOR="/usr/bin/vim"
+export EDITOR="/usr/local/Cellar/emacs-plus/25.1/bin/emacs" # oh snap
+export PATH=/usr/local/share/npm/bin:/usr/local/sbin:/usr/local/bin:/Users/tim/.rvm/bin:$PATH
 
 export LESS="-erX"
 export LESS_TERMCAP_mb=$'\E[01;31m' # begin blinking
@@ -25,3 +26,11 @@ export LESS_TERMCAP_us=$'\E[32m' # begin underline
 # Color, yo!
 export TERM="xterm-color"
 #export TERM="ansi"
+
+export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_77.jdk/Contents/Home"
+
+# Add GHC 7.8.3 to the PATH, via http://ghcformacosx.github.io/
+export GHC_DOT_APP="/Applications/GHC.app"
+if [ -d "$GHC_DOT_APP" ]; then
+    export PATH="${HOME}/.cabal/bin:${GHC_DOT_APP}/Contents/bin:${PATH}"
+fi
